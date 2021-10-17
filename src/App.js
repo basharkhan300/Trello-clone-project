@@ -11,7 +11,11 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <NavBar />
-        <Boards />
+        <BrowserRouter>
+          <div>
+            <Route exact path="/" component={Boards} />
+          </div>
+        </BrowserRouter>
       </React.Fragment>
     );
   }

@@ -1,11 +1,32 @@
-import axios from 'axios'
+import axios from "axios";
 
-const API_KEY= process.env.REACT_APP_AUTH_KEY;
-const API_TOKEN= process.env.REACT_APP_AUTH_TOKEN;
+const API_KEY = process.env.REACT_APP_AUTH_KEY;
+const API_TOKEN = process.env.REACT_APP_AUTH_TOKEN;
 // console.log(API_KEY)
 
-export function getBoards(){
+export function getBoards() {
+  return axios
+    .get(
+      `https://api.trello.com/1/members/me/boards?key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
+}
+
+export function createBoard(name) {
+  return axios
+    .post(
+      `https://api.trello.com/1/boards/?name=${name}&key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
+}
+
+
+export function getLists(id){
+
     return axios
-        .get(`https://api.trello.com/1/members/me/boards?key=${API_KEY}&token=${API_TOKEN}`)
-        .then(res=>res.data)
+    .get(
+        `https://api.trello.com/1/boards/${id}/lists?&key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then(res => res.data)
+    
 }
