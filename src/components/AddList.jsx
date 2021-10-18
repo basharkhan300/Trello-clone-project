@@ -22,16 +22,18 @@ class AddList extends React.Component {
   handleSubmit= async (event) => {
 // by default if we type submit it refresh even if we don't ask it to do..
 // thus with prevent.default, we can prevent it
-// event.preventDefault();
+event.preventDefault();
 // console.log(this.state.name);   Now I have to make a request which is post request and add a board in my ui........    for this I have to create a function createBoard() in api.jsx which takes "name" of the board as parameter...... see createBoard function in  api.jsx
-let {idBoard} = this.props.match.params;
-console.log("ASD");
+// let {idBoard} = this.props.match.params;
 
-const resp = await TrelloApi.createList(this.state.name, idBoard);
-console.log(resp);
+
+const resp = await TrelloApi.createList(this.state.name,this.props.id);
+console.log(">>>"+resp);
   }
 
   render() {
+    console.log("ASD");
+console.log(this.props.id);
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="mb-3">

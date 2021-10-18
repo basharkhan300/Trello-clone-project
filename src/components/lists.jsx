@@ -26,10 +26,10 @@ class Lists extends React.Component {
       }
     
       componentDidMount() {
-        let {id} = this.props.match.params;
+        // let {id} = this.props.match.params;
         // console.log(id);
         // console.log('saam');
-        this.fetchLists(id);
+        this.fetchLists(this.props.match.params.id);
       }
     
       render() {
@@ -42,7 +42,7 @@ class Lists extends React.Component {
                 
                 <List key={id} name={name} id={id}  />
               ))}
-               <AddList />   
+               <AddList  id={this.props.match.params.id}/>   
             </div>
     
           </React.Fragment>

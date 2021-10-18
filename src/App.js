@@ -16,7 +16,7 @@ class App extends React.Component {
       <div>
         <NavBar />
         <Route exact path='/' component={Boards} />
-        <Route path='/:id' component={Lists} />
+        <Route path='/lists/:id' component={Lists} />
         
 
       </div>

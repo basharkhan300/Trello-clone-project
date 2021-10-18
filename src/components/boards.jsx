@@ -51,7 +51,7 @@ class Boards extends React.Component {
         
         <div className="d-flex flex-row flex-wrap justify-content-center">
           {boards.map(({ name, id, prefs }) => (
-              <Link key={id} to={`${id}`}>
+              <Link key={id} to={`/lists/${id}`}>
             <Board  name={name} prefs={prefs} id={id}  />
             </Link>
           ))}

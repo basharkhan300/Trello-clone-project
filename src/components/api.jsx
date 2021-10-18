@@ -34,7 +34,7 @@ export function createList(name, idBoard) {
   console.log(name);
   return axios
     .post(
-      `https://api.trello.com/1/lists?name=${name}&idBoard=${idBoard}&key=${API_KEY}&token=${API_TOKEN}`
+      `https://api.trello.com/1/boards/${idBoard}/lists?name=${name}&key=${API_KEY}&token=${API_TOKEN}`
     )
     .then((res) => res.data);
 }
