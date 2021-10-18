@@ -10,10 +10,8 @@ class AddList extends React.Component {
     };
   }
 
-//   this will change the name value when we write something in create board
   
   handleChange = (event) => {
-    // console.log(event.target.value);
     this.setState({
         name:event.target.value,
     })
@@ -22,7 +20,7 @@ class AddList extends React.Component {
   handleSubmit= async (event) => {
 // by default if we type submit it refresh even if we don't ask it to do..
 // thus with prevent.default, we can prevent it
-event.preventDefault();
+// event.preventDefault();
 // console.log(this.state.name);   Now I have to make a request which is post request and add a board in my ui........    for this I have to create a function createBoard() in api.jsx which takes "name" of the board as parameter...... see createBoard function in  api.jsx
 // let {idBoard} = this.props.match.params;
 

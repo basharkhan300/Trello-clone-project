@@ -31,6 +31,14 @@ class Lists extends React.Component {
         // console.log('saam');
         this.fetchLists(this.props.match.params.id);
       }
+
+      handleDeleteList = async (listId) => {
+        const deleted = await TrelloApi.archiveList(listId);
+        this.setState({
+            lists: this.state.lists.filter((p) => p.id !== listId)   
+        })
+      }
+      
     
       render() {
         const { lists } = this.state;
@@ -40,7 +48,7 @@ class Lists extends React.Component {
             <div className="d-flex flex-row flex-wrap justify-content-center">
               {lists.map(({ name, id}) => (
                 
-                <List key={id} name={name} id={id}  />
+                <List key={id} name={name} id={id} onDelete={() => this.handleDeleteList(id)}  />
               ))}
                <AddList  id={this.props.match.params.id}/>   
             </div>

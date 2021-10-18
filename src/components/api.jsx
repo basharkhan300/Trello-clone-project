@@ -38,3 +38,15 @@ export function createList(name, idBoard) {
     )
     .then((res) => res.data);
 }
+
+export function archiveList(listId){
+
+  console.log(listId);
+  return axios
+  .put(
+    `https://api.trello.com/1/lists/${listId}/closed?key=${API_KEY}&token=${API_TOKEN}&value=true`
+
+  )
+  .then((res) => res.data)
+  
+}
