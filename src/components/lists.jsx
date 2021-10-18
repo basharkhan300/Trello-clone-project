@@ -5,6 +5,7 @@ import Board from './board';
 import * as TrelloApi from './api'
 
 import List from './list';
+import AddList from './AddList';
 
 
 class Lists extends React.Component {
@@ -16,8 +17,8 @@ class Lists extends React.Component {
         };
       }
     
-      async fetchLists() {
-        const lists = await TrelloApi.getLists();
+      async fetchLists(id) {
+        const lists = await TrelloApi.getLists(id);
     
         this.setState({
           lists,
@@ -25,7 +26,10 @@ class Lists extends React.Component {
       }
     
       componentDidMount() {
-        this.fetchLists();
+        let {id} = this.props.match.params;
+        // console.log(id);
+        // console.log('saam');
+        this.fetchLists(id);
       }
     
       render() {
@@ -34,10 +38,11 @@ class Lists extends React.Component {
           <React.Fragment>
             
             <div className="d-flex flex-row flex-wrap justify-content-center">
-              {lists.map(({ name, id, prefs }) => (
+              {lists.map(({ name, id}) => (
                 
-                <List key={id} name={name} prefs={prefs} id={id} />
+                <List key={id} name={name} id={id}  />
               ))}
+               <AddList />   
             </div>
     
           </React.Fragment>

@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Board from "./board";
 import AddBoard from "./AddBoard";
 
+import List from './list';
+
 // import * as TrelloApi from './api'
 import * as TrelloApi from "./api";
 import { logDOM, wait } from "@testing-library/dom";
@@ -15,7 +17,7 @@ class Boards extends React.Component {
 
     this.state = {
       boards: [],
-      lists: []
+      // lists: []
     };
   }
 
@@ -27,14 +29,14 @@ class Boards extends React.Component {
     });
   }
 
-  handleList = async (id) => {
-    console.log(id);
-    const lists = await TrelloApi.getLists(id);
+  // handleList = async (id) => {
+  //   console.log(id);
+  //   const lists = await TrelloApi.getLists(id);
 
-    this.setState({
-      lists
-    })
-  }
+  //   this.setState({
+  //     lists
+  //   })
+  // }
 
   componentDidMount() {
     this.fetchBoard();
@@ -49,9 +51,13 @@ class Boards extends React.Component {
         
         <div className="d-flex flex-row flex-wrap justify-content-center">
           {boards.map(({ name, id, prefs }) => (
-            
-            <Board key={id} name={name} prefs={prefs} id={id} onHandleList={ () => this.handleList(id) } />
+              <Link key={id} to={`${id}`}>
+            <Board  name={name} prefs={prefs} id={id}  />
+            </Link>
           ))}
+          
+          
+      
           <AddBoard />
         </div>
         
@@ -62,3 +68,6 @@ class Boards extends React.Component {
 }
 
 export default Boards;
+
+
+// onHandleList={ () => this.handleList(id) }

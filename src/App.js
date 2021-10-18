@@ -6,17 +6,21 @@ import Boards from "./components/boards";
 
 import NavBar from "./components/navbar";
 
+import Lists from "./components/lists";
+import List from "./components/list";
+
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <BrowserRouter>
+      <div>
         <NavBar />
-        <BrowserRouter>
-          <div>
-            <Route exact path="/" component={Boards} />
-          </div>
-        </BrowserRouter>
-      </React.Fragment>
+        <Route exact path='/' component={Boards} />
+        <Route path='/:id' component={Lists} />
+        
+
+      </div>
+      </BrowserRouter>
     );
   }
 }

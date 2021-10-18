@@ -20,13 +20,21 @@ export function createBoard(name) {
     .then((res) => res.data);
 }
 
-
-export function getLists(id){
-
-    return axios
+export function getLists(id) {
+  console.log("idd"+id);
+  return axios
     .get(
-        `https://api.trello.com/1/boards/${id}/lists?&key=${API_KEY}&token=${API_TOKEN}`
+      `https://api.trello.com/1/boards/${id}/lists?&key=${API_KEY}&token=${API_TOKEN}`
     )
-    .then(res => res.data)
-    
+    .then((res) => res.data);
+}
+
+export function createList(name, idBoard) {
+  console.log(idBoard);
+  console.log(name);
+  return axios
+    .post(
+      `https://api.trello.com/1/lists?name=${name}&idBoard=${idBoard}&key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
 }
