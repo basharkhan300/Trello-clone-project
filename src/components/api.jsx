@@ -50,3 +50,14 @@ export function archiveList(listId){
   .then((res) => res.data)
   
 }
+
+export function getCards(cardId){
+
+  return axios
+  .get(
+    `https://api.trello.com/1/lists/${cardId}/cards?&key=${API_KEY}&token=${API_TOKEN}`
+    // `https://api.trello.com/1/lists/${cardId}/cards?key=${API_KEY}&token=${API_TOKEN}`
+  )
+  .then((res) => res.data)
+  
+}

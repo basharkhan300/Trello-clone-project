@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-const List = ({ name, onDelete }) => {
+import Cards from "./Cards";
+
+const List = ({ name, id, onDelete }) => {
   // return(
   //         <div  className="card">
   //   <div className="card-body">
@@ -17,23 +19,30 @@ const List = ({ name, onDelete }) => {
 
   return (
     <div
-      className="d-flex flex-row flex-wrap justify-content-center card m-2"
-      style={{ height: "95vh", width: "180px", backgroundColor: "rgb(211,211,211)" }}
+      className="card m-2"
+      style={{
+        height: "95vh",
+        width: "180px",
+        backgroundColor: "rgb(211,211,211)",
+      }}
     >
-    <div className="d-flex flex-column">
-      <h5
-        style={{
-          // position: "absolute",
-          // top: "10px",
-          // left: "10px",
-          color: "black",
-        }}
-        className="card-title"
-      >
-        {name}
-      </h5>
-      <button className="btn btn-sm btn-danger" onClick={onDelete} >Archive</button>
+      <div className="d-flex flex-column">
+        <h5
+          style={{
+            // position: "absolute",
+            // top: "10px",
+            // left: "10px",
+            color: "black",
+          }}
+          className="card-title"
+        >
+          {name}
+        </h5>
+        <button className="btn btn-sm btn-danger" onClick={onDelete}>
+          Archive
+        </button>
       </div>
+      <Cards id={id} />
     </div>
   );
 };
