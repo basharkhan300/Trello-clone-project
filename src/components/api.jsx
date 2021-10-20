@@ -99,12 +99,10 @@ export function deleteCheckList(cardId) {
     .then((res) => res.data);
 }
 
-
-export function getCheckItem(checkListId){
-
-  return axios.get(
-    `https://api.trello.com/1/checklists/${checkListId}/checkItems?key=${API_KEY}&token=${API_TOKEN}`
-  )
-  .then((res) => res.data)
-  
+export function getCheckItem(checkListId) {
+  return axios
+    .get(
+      `https://api.trello.com/1/checklists/${checkListId}/checkItems?key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
 }
