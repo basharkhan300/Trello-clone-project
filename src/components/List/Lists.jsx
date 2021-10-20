@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 
-import Board from "./board";
-
-import * as TrelloApi from "./api";
-
-import List from "./list";
-import AddList from "./AddList";
+import * as TrelloApi from "../api";
+import List from "./List";
 
 class Lists extends React.Component {
   constructor(props) {
@@ -13,7 +9,7 @@ class Lists extends React.Component {
 
     this.state = {
       lists: [],
-      name: "", 
+      name: ""
     };
   }
 
@@ -37,7 +33,6 @@ class Lists extends React.Component {
     });
   };
 
-
   // section for fetching lists start here
 
   async fetchLists(id) {
@@ -51,7 +46,6 @@ class Lists extends React.Component {
   componentDidMount() {
     this.fetchLists(this.props.match.params.id);
   }
-
 
   // section for delete list here
 
@@ -85,7 +79,7 @@ class Lists extends React.Component {
                 className="form-control"
                 id="board-name"
                 onChange={this.handleChange}
-                placeholder="Board Name here"
+                placeholder="List Name here"
               />
             </div>
             <button type="submit" className="btn btn-primary">
@@ -99,4 +93,3 @@ class Lists extends React.Component {
 }
 
 export default Lists;
-// <AddList  id={this.props.match.params.id}/>

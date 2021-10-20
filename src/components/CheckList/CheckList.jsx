@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-import * as TrelloApi from "./api";
-import AddCheckList from "./AddCheckList";
-import CheckItem from "./CheckItem";
+import * as TrelloApi from "../api";
+import CheckItem from "../Checkitem/CheckItem";
 
 class CheckList extends Component {
   constructor(props) {
@@ -82,10 +81,9 @@ class CheckList extends Component {
               />
             </div>
             <div className="text-center">
-
-            <button type="submit" className="btn btn-primary btn-sm m-2">
-              Add CheckList
-            </button>
+              <button type="submit" className="btn btn-primary btn-sm m-2">
+                Add CheckList
+              </button>
             </div>
           </form>
         </div>
@@ -95,4 +93,3 @@ class CheckList extends Component {
 }
 
 export default CheckList;
-// <AddCheckList id={this.props.id} key={this.props.id}  />

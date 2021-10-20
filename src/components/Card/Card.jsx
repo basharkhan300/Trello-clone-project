@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-import { Button } from "react-bootstrap";
-
-import Popup from "./Popup";
-
+import Popup from "../Modal/Popup";
 
 class Card extends Component {
   constructor(props) {
@@ -28,7 +25,6 @@ class Card extends Component {
   render() {
     return (
       <div className="card m-2" style={{ backgroundColor: "rgb(251,241,231)" }}>
-
         <div
           onClick={() => this.handleModal()}
           style={{
@@ -47,32 +43,15 @@ class Card extends Component {
             closeHandler={this.closeHandle}
           />
         </div>
-        <button className="btn btn-sm btn-warning" onClick={() => this.props.onDeleteCard(this.props.id) }>Delete Card</button>
+        <button
+          className="btn btn-sm btn-warning"
+          onClick={() => this.props.onDeleteCard(this.props.id)}
+        >
+          Delete Card
+        </button>
       </div>
     );
   }
 }
 
 export default Card;
-
-// return (
-//   <div
-//     className="card m-2"
-//     style={{ backgroundColor: "rgb(251,241,231)" }}
-//   >
-//     <div onClick={onClickHandle}
-//       style={{
-//         color: "black",
-//         backgroundColor: "white"
-//       }}
-//       className="card-body p-2"
-//       data-id = {id}
-//     >
-//       {name}
-//     </div>
-
-//   </div>
-// );
-// };
-
-// export default Card;

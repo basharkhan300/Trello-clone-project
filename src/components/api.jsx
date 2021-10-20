@@ -107,13 +107,18 @@ export function getCheckItem(checkListId) {
     .then((res) => res.data);
 }
 
-export function addCheckItem(checkListId, name){
-  console.log("post psot post", checkListId);
-
+export function addCheckItem(checkListId, name) {
   return axios
-  .post(
-    `https://api.trello.com/1/checklists/${checkListId}/checkItems?name=${name}&key=${API_KEY}&token=${API_TOKEN}`
-  )
-  .then((res) => res.data);
-  
+    .post(
+      `https://api.trello.com/1/checklists/${checkListId}/checkItems?name=${name}&key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
+}
+
+export function deleteCheckItem(checkListId, CheckItemId) {
+  return axios
+    .delete(
+      `https://api.trello.com/1/checklists/${checkListId}/checkItems/${CheckItemId}?key=${API_KEY}&token=${API_TOKEN}`
+    )
+    .then((res) => res.data);
 }
