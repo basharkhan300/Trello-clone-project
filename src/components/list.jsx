@@ -45,9 +45,10 @@ const List = ({ name, id, onDelete }) => {
         </button>
       </div>
       <Cards id={id} />
-      <AddCard id={id} />
     </div>
   );
 };
 
 export default List;
+
+/* <AddCard id={id} /> */
