@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
 import { Modal, Button } from 'react-bootstrap';
+import AddCheckList from './AddCheckList';
 
 import * as TrelloApi from './api'
+import CheckList from './CheckList';
 
+import "./Popup.css"
 
 
 class Popup extends React.Component {
@@ -13,42 +16,36 @@ class Popup extends React.Component {
 
         super(props);
         
-    //     this.state = {
-    //         oneCard : [],
-    //         show : this.props.show
-    //       };
+        // this.state = {
+        //     checkList : [],
+        //   };
         
     }
 
-    //  fetchOneCard = async () => {
-    //     const oneCard = await TrelloApi.getOneCard(this.props.cardId);
-    //     console.log("One card is "+ oneCard);
+    // fetchCheckList = async (cardId) => {
+    //     const checkList = await TrelloApi.getOneCard(cardId);
+    // //     console.log("One card is "+ oneCard);
     //     this.setState({
-    //         oneCard
+    //         checkList
     //     })
     // }
 
     // componentDidMount(){
-    //     this.fetchOneCard();
-    //     console.log("didadasdasd mount"+this.props.cardId);
+    //     this.fetchCheckList(this.props.id);
+    // //     console.log("didadasdasd mount"+this.props.cardId);
     // }
     
-    // closeHandle(){
-    //     console.log("show si",this.props.show);
-    //     // console.log("show state", this.state.show);
-    //     this.setState({
-    //         show:! this.state.show
-
-    //     })
-    //     console.log("after set state", this.state.show);
-    // }
-
     
     render() { 
         return (<div>
-            <Modal show={this.props.show}>
+            <Modal size="lg" show={this.props.show} >
                 <Modal.Header>name={this.props.name}</Modal.Header>
-                <Modal.Body>id = {this.props.id}</Modal.Body>
+                <Modal.Body>
+                <div>
+                    <CheckList id={this.props.id} />
+                    
+                </div>
+                 </Modal.Body>
                 <Modal.Footer>
                 <Button onClick={this.props.closeHandler} >
                     close
