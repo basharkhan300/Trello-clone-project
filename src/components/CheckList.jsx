@@ -81,9 +81,12 @@ class CheckList extends Component {
                 placeholder="Checklist Name here"
               />
             </div>
+            <div className="text-center">
+
             <button type="submit" className="btn btn-primary btn-sm m-2">
               Add CheckList
             </button>
+            </div>
           </form>
         </div>
       </div>
