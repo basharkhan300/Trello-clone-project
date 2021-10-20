@@ -1,38 +1,76 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-const Card = ({ name }) => {
-    // return(
-    //         <div  className="card">
-    //   <div className="card-body">
-    //     <p className="card-title">Card title</p>
-    //     <h6 className="card-subtitle mb-2 text-muted">{name}</h6>
-    //     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    //     <a href="#" className="card-link">Card link</a>
-    //     <a href="#" className="card-link">Another link</a>
-    //   </div>
-    // </div>
-    //     )
-  
+import { Button } from "react-bootstrap";
+
+import Popup from "./Popup";
+
+
+class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+    };
+  }
+
+  handleModal = () => {
+    this.setState({
+      show: true,
+    });
+  };
+
+  closeHandle = () => {
+    this.setState({
+      show: false,
+    });
+  };
+
+  render() {
     return (
-      <div
-        className="card m-2"
-        style={{ backgroundColor: "rgb(251,241,231)" }}
-      >
+      <div className="card m-2" style={{ backgroundColor: "rgb(251,241,231)" }}>
         <div
+          onClick={() => this.handleModal()}
           style={{
-            // position: "absolute",
-            // top: "10px",
-            // left: "10px",
             color: "black",
-            backgroundColor: "white"
+            backgroundColor: "white",
           }}
           className="card-body p-2"
         >
-          {name}
+          {this.props.name}
+        </div>
+        <div>
+          <Popup
+            show={this.state.show}
+            name={this.props.name}
+            id={this.props.id}
+            closeHandler={this.closeHandle}
+          />
         </div>
       </div>
     );
-  };
-  
-  export default Card;
-  
+  }
+}
+
+export default Card;
+
+// return (
+//   <div
+//     className="card m-2"
+//     style={{ backgroundColor: "rgb(251,241,231)" }}
+//   >
+//     <div onClick={onClickHandle}
+//       style={{
+//         color: "black",
+//         backgroundColor: "white"
+//       }}
+//       className="card-body p-2"
+//       data-id = {id}
+//     >
+//       {name}
+//     </div>
+
+//   </div>
+// );
+// };
+
+// export default Card;

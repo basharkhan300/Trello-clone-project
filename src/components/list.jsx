@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Cards from "./Cards";
 
+import AddCard from "./AddCard";
+
 const List = ({ name, id, onDelete }) => {
   // return(
   //         <div  className="card">
@@ -43,6 +45,7 @@ const List = ({ name, id, onDelete }) => {
         </button>
       </div>
       <Cards id={id} />
+      <AddCard id={id} />
     </div>
   );
 };

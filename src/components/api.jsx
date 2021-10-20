@@ -21,7 +21,6 @@ export function createBoard(name) {
 }
 
 export function getLists(id) {
-  console.log("idd"+id);
   return axios
     .get(
       `https://api.trello.com/1/boards/${id}/lists?&key=${API_KEY}&token=${API_TOKEN}`
@@ -30,8 +29,6 @@ export function getLists(id) {
 }
 
 export function createList(name, idBoard) {
-  console.log(idBoard);
-  console.log(name);
   return axios
     .post(
       `https://api.trello.com/1/boards/${idBoard}/lists?name=${name}&key=${API_KEY}&token=${API_TOKEN}`
@@ -41,7 +38,6 @@ export function createList(name, idBoard) {
 
 export function archiveList(listId){
 
-  console.log(listId);
   return axios
   .put(
     `https://api.trello.com/1/lists/${listId}/closed?key=${API_KEY}&token=${API_TOKEN}&value=true`
@@ -57,6 +53,35 @@ export function getCards(cardId){
   .get(
     `https://api.trello.com/1/lists/${cardId}/cards?&key=${API_KEY}&token=${API_TOKEN}`
     // `https://api.trello.com/1/lists/${cardId}/cards?key=${API_KEY}&token=${API_TOKEN}`
+  )
+  .then((res) => res.data)
+  
+}
+
+export function createCards(idList, name){
+  console.log("In card" + idList);
+  return axios
+  .post(
+    `https://api.trello.com/1/cards?idList=${idList}&name=${name}&key=${API_KEY}&token=${API_TOKEN}`
+  )
+  .then((res) => res.data)
+  
+}
+
+// export function deleteCard(idCard){
+
+//   return axios
+//   .delete(
+//     `https://api.trello.com/1/cards/${idCard}&key=${API_KEY}&token=${API_TOKEN}`
+//   )
+  
+// }
+
+export function getOneCard(cardId){
+console.log("cardid in apijsx is "+ cardId );
+  return axios
+  .get(
+    `https://api.trello.com/1/cards/${cardId}?&key=${API_KEY}&token=${API_TOKEN}`
   )
   .then((res) => res.data)
   

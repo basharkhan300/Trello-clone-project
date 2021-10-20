@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+
+// import { Modal, Button } from 'react-bootstrap';
+import Popup from "./Popup"
 import Board from './board';
 
 import * as TrelloApi from './api'
@@ -7,6 +11,7 @@ import * as TrelloApi from './api'
 import List from './list';
 import AddList from './AddList';
 import Card from './Card'
+import AddCard from './AddCard';
 
 
 class Cards extends React.Component {
@@ -15,6 +20,8 @@ class Cards extends React.Component {
     
         this.state = {
           cards: [],
+          // show:false,
+          // cardId:""
         };
       }
     
@@ -40,22 +47,43 @@ class Cards extends React.Component {
     //     })
     //   }
       
+    // handleModal = (event) => {
+    //   console.log(event);
+    //   this.setState({
+    //     cardId:
+    //     event.target.getAttribute("data-id")      })
+    //   this.setState({
+    //     show:!this.state.show
+    //   })
+    //   console.log("data attribute " + event.target.getAttribute("data-id"));
+    // }
     
       render() {
         const { cards } = this.state;
+        console.log("newlone",this.state.cardId);
         return (
           <React.Fragment>
             
             <div >
-              {cards.map(({ name, id}) => (
+              {cards.map(({ name, id, desc}) => (
+                <div>
+                <Card key={id} name={name} id={id} desc={desc} />
+                </div>
                 
-                <Card key={id} name={name} id={id}   />
+                
               ))}
+              
             </div>
-    
+
+            
+                
           </React.Fragment>
         );
       }
 }
  
 export default Cards;
+
+
+// onClickHandle={() => {this.handleModal()}} 
+/* <Popup onhandle={this.handleModal} cardId={this.state.cardId} show={this.state.show} /> */

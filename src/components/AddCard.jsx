@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import * as TrelloApi from "./api"
 
-class AddList extends React.Component {
+class AddCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,29 +25,29 @@ class AddList extends React.Component {
 // let {idBoard} = this.props.match.params;
 
 
-const resp = await TrelloApi.createList(this.state.name,this.props.id);
+const resp = await TrelloApi.createCards(this.props.id, this.state.name);
+console.log("card resp: "+ resp);
   }
 
   render() {
-console.log(this.props.id);
+// console.log(this.props.id);
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="board-name">Create new List</label>
           <input value={this.state.name}
             type="text"
             className="form-control"
             id="board-name"
             onChange={this.handleChange}
-            placeholder="Board Name here"
+            placeholder="Card Name here"
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Add Card
         </button>
       </form>
     );
   }
 }
 
-export default AddList;
+export default AddCard;
