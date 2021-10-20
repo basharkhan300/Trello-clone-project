@@ -28,6 +28,7 @@ class Card extends Component {
   render() {
     return (
       <div className="card m-2" style={{ backgroundColor: "rgb(251,241,231)" }}>
+
         <div
           onClick={() => this.handleModal()}
           style={{
@@ -46,6 +47,7 @@ class Card extends Component {
             closeHandler={this.closeHandle}
           />
         </div>
+        <button className="btn btn-sm btn-warning" onClick={() => this.props.onDeleteCard(this.props.id) }>Delete Card</button>
       </div>
     );
   }
