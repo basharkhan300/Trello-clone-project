@@ -3,11 +3,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import Board from "./board";
-import AddBoard from "./AddBoard";
-
-import List from './list';
-
-// import * as TrelloApi from './api'
 import * as TrelloApi from "./api";
 import { logDOM, wait } from "@testing-library/dom";
 
@@ -17,10 +12,32 @@ class Boards extends React.Component {
 
     this.state = {
       boards: [],
-      // lists: []
+      name: "",
     };
   }
 
+  // Section for creating new board
+
+  
+  handleChange = (event) => {
+    this.setState({
+        name:event.target.value,
+    })
+  }
+
+  handleSubmit= async (event) => {
+event.preventDefault();
+
+const resp = await TrelloApi.createBoard(this.state.name);
+this.setState({
+  boards:[resp, ...this.state.boards]
+})
+  }
+
+  
+
+  // section for fetching boards
+  
   async fetchBoard() {
     const boards = await TrelloApi.getBoards();
 
@@ -29,20 +46,9 @@ class Boards extends React.Component {
     });
   }
 
-  // handleList = async (id) => {
-  //   console.log(id);
-  //   const lists = await TrelloApi.getLists(id);
-
-  //   this.setState({
-  //     lists
-  //   })
-  // }
 
   componentDidMount() {
-    this.fetchBoard();
-    // this.handleList();
-    
-    
+    this.fetchBoard();    
   }
 
 
@@ -59,9 +65,23 @@ class Boards extends React.Component {
             </Link>
           ))}
           
-          
+          <form onSubmit={this.handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="board-name">Create new Board</label>
+          <input value={this.state.name}
+            type="text"
+            className="form-control"
+            id="board-name"
+            onChange={this.handleChange}
+            placeholder="Board Name here"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
       
-          <AddBoard />
+          
         </div>
         
 
@@ -72,5 +92,3 @@ class Boards extends React.Component {
 
 export default Boards;
 
-
-// onHandleList={ () => this.handleList(id) }
