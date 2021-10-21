@@ -10,6 +10,7 @@ const List = ({ name, id, onDelete }) => {
         height: "95vh",
         width: "180px",
         backgroundColor: "rgb(211,211,211)",
+        overflow: "auto"
       }}
     >
       <div className="d-flex flex-column">
