@@ -62,7 +62,7 @@ class CheckItem extends Component {
         {this.state.checkItems.map((item) => (
           <div>
             <FormControlLabel
-              control={<Checkbox defaultChecked />}
+              control={<Checkbox size="small" color="success" />}
               label={item.name}
             />
 
