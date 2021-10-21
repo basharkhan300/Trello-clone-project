@@ -31,10 +31,13 @@ class Card extends Component {
             color: "black",
             backgroundColor: "white",
           }}
-          className="card-body p-2 d-flex justify-content-between"
+          className="card-body p-2"
         >
           {this.props.name}
-          <button
+          
+        </div>
+        <div>
+        <button
           className="btn btn-sm btn-warning"
           onClick={() => this.props.onDeleteCard(this.props.id)}
         >
