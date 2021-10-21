@@ -31,9 +31,15 @@ class Card extends Component {
             color: "black",
             backgroundColor: "white",
           }}
-          className="card-body p-2"
+          className="card-body p-2 d-flex justify-content-between"
         >
           {this.props.name}
+          <button
+          className="btn btn-sm btn-warning"
+          onClick={() => this.props.onDeleteCard(this.props.id)}
+        >
+          X
+        </button>
         </div>
         <div>
           <Popup
@@ -43,12 +49,7 @@ class Card extends Component {
             closeHandler={this.closeHandle}
           />
         </div>
-        <button
-          className="btn btn-sm btn-warning"
-          onClick={() => this.props.onDeleteCard(this.props.id)}
-        >
-          Delete Card
-        </button>
+
       </div>
     );
   }
